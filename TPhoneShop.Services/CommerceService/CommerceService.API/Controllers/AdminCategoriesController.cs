@@ -1,5 +1,4 @@
 ﻿using CommerceService.Application.Catalog.Categories.Commands.CreateCategory;
-using CommerceService.Application.Catalog.Categories.Queries.GetCategoriesForAdmin;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CommerceService.API.Controllers.Admin
@@ -14,12 +13,6 @@ namespace CommerceService.API.Controllers.Admin
         {
             await mediator.Send(command, cancellationToken);
             return Ok();
-        }
-        [HttpGet]
-        [Authorize(Permissions.CategoriesRead)]
-        public async Task<IActionResult> GetCategories([FromQuery] GetCategoriesForAdminQuery query, CancellationToken cancellationToken)
-        {
-            return Ok(await mediator.Send(query, cancellationToken));
         }
     }
 }
